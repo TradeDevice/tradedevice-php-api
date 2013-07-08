@@ -56,19 +56,33 @@ class TradeDevice {
 		return $root;
 	}
 
-	public function getDevices()
+	private function getData($query)
 	{
-		// Define query
-		$devices = "devices?api_key=".$this->api_key."&affiliate=".$this->affiliate;
-		// Get root
 		$root = $this->getApiRoot();
-		$final = $root.$devices;
+		$final = $root.$query;
 
-		// Query with file_get_contents()
 		$json = file_get_contents($final);
 		// Turn it into something usefull!
 		$data = json_decode($json);
 		// Return it
+		return $data;
+	}
+
+	public function getDevices()
+	{
+		// Define query
+		$query = "devices?api_key=".$this->api_key."&affiliate=".$this->affiliate;
+		// Get the data and return it
+		$data = $this->getData($query);
+		return $data;
+	}
+
+	public function getQuestions($device)
+	{
+		// Define query
+		$query = "questions?api_key=".$this->api_key."&affiliate=".$this->affiliate."&device".$id;
+		// Get the data and return it
+		$data = $this->getData($query);
 		return $data;
 	}
 
