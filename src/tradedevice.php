@@ -5,7 +5,6 @@
  *	TradeDevice PHP Api
  *  for use with TradeDevice.com
  *  License: MIT
- *  Api Keys and/or Referall/Affiliate Keys may be required!
  *
  */
 
@@ -13,11 +12,10 @@ class TradeDevice {
 
 	private $api_root;
 	private $country;
-	private $api_key;
 
 	public $url = "tradedevice.com/api/";
 
-	public function __construct($country = "us", $api_key = null)
+	public function __construct($country = "us")
 	{
 		// Fixing User Errors
 		if($country == "US")
@@ -30,14 +28,6 @@ class TradeDevice {
 		}
 		// Settings
 		$this->country = $country;
-		if(is_null($api_key))
-		{
-			$this->api_key = 0;
-		}
-		else
-		{
-			$this->api_key = $api_key;
-		}
 	}
 
 	private function getApiRoot()
@@ -62,7 +52,7 @@ class TradeDevice {
 	public function getDevices($limit = 0)
 	{
 		// Define query
-		$query = "devices?api_key=".$this->api_key."&limit=".$limit;
+		$query = "devices?limit=".$limit;
 		// Get the data and return it
 		$data = $this->getData($query);
 		return $data;
@@ -71,7 +61,7 @@ class TradeDevice {
 	public function getQuestions($device)
 	{
 		// Define query
-		$query = "questions?api_key=".$this->api_key."&device=".$device;
+		$query = "questions?device=".$device;
 		// Get the data and return it
 		$data = $this->getData($query);
 		return $data;
@@ -86,7 +76,7 @@ class TradeDevice {
 			$questions .= $q."=".$a."&";
 		}
 		// Prepare the query
-		$query = "amount?api_key=".$this->api_key."&device=".$device."&".$questions;
+		$query = "amount?device=".$device."&".$questions;
 		// Thats a long query!
 		// We will submit it anyways
 		$data = $this->getData($query);
