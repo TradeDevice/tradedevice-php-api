@@ -14,11 +14,10 @@ class TradeDevice {
 	private $api_root;
 	private $country;
 	private $api_key;
-	private $affiliate;
 
 	public $url = "tradedevice.com/api/";
 
-	public function __construct($country = "us", $api_key = null, $affiliate = null)
+	public function __construct($country = "us", $api_key = null)
 	{
 		// Fixing User Errors
 		if($country == "US")
@@ -37,15 +36,7 @@ class TradeDevice {
 		}
 		else
 		{
-			$this->api_key = $api_key
-		}
-		if(is_null($affiliate))
-		{
-			$this->affiliate = 0;
-		}
-		else
-		{
-			$this->affiliate = $affiliate
+			$this->api_key = $api_key;
 		}
 	}
 
@@ -68,10 +59,10 @@ class TradeDevice {
 		return $data;
 	}
 
-	public function getDevices()
+	public function getDevices($limit = 0)
 	{
 		// Define query
-		$query = "devices?api_key=".$this->api_key."&affiliate=".$this->affiliate;
+		$query = "devices?api_key=".$this->api_key."&limit=".$limit;
 		// Get the data and return it
 		$data = $this->getData($query);
 		return $data;
@@ -80,7 +71,7 @@ class TradeDevice {
 	public function getQuestions($device)
 	{
 		// Define query
-		$query = "questions?api_key=".$this->api_key."&affiliate=".$this->affiliate."&device".$device;
+		$query = "questions?api_key=".$this->api_key."&device=".$device;
 		// Get the data and return it
 		$data = $this->getData($query);
 		return $data;
@@ -95,7 +86,7 @@ class TradeDevice {
 			$questions .= $q."=".$a."&";
 		}
 		// Prepare the query
-		$query = "amount?api_key=".$this->api_key."&affiliate=".$this->affiliate."&device".$device."&".$questions;
+		$query = "amount?api_key=".$this->api_key."&device=".$device."&".$questions;
 		// Thats a long query!
 		// We will submit it anyways
 		$data = $this->getData($query);
