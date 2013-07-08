@@ -80,8 +80,24 @@ class TradeDevice {
 	public function getQuestions($device)
 	{
 		// Define query
-		$query = "questions?api_key=".$this->api_key."&affiliate=".$this->affiliate."&device".$id;
+		$query = "questions?api_key=".$this->api_key."&affiliate=".$this->affiliate."&device".$device;
 		// Get the data and return it
+		$data = $this->getData($query);
+		return $data;
+	}
+
+	public function getAmount($device,$questionarray)
+	{
+		$questions;
+		foreach($questionarray as $q => $a)
+		{
+			// Prepare
+			$questions .= $q."=".$a."&";
+		}
+		// Prepare the query
+		$query = "amount?api_key=".$this->api_key."&affiliate=".$this->affiliate."&device".$device."&".$questions;
+		// Thats a long query!
+		// We will submit it anyways
 		$data = $this->getData($query);
 		return $data;
 	}
