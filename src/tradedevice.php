@@ -58,7 +58,14 @@ class TradeDevice {
 		// Return it
 		return $data;
 	}
-
+	
+       /**
+       * 
+       * Sets up query for getting devices from the API
+       *
+       * @param int $limit Limit for how many devices
+       * @return string ($data=query)
+       */
 	public function getDevices($limit = 0)
 	{
 		// Define query
