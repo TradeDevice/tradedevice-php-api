@@ -19,13 +19,9 @@ class TradeDevice {
 	{
 		// Fixing User Errors
 		if($country == "US")
-		{
 			$country = "us";
-		}
 		if($country == "CA")
-		{
 			$country = "ca";
-		}
 		// Settings
 		$this->country = $country;
 	}
