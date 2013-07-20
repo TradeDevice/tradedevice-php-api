@@ -1,12 +1,13 @@
 <?php
 
-/*
- *
- *	TradeDevice PHP Api
- *  for use with TradeDevice.com
- *  License: MIT
- *
- */
+/**
+   * TradeDevice PHP API
+   * 
+   * 
+   * @package    tradedevice-php-api
+   * @subpackage TradeDevice
+   * @author     TradeDevice <info@tradedevice.com>
+   */
 
 class TradeDevice {
 
@@ -26,6 +27,12 @@ class TradeDevice {
 		$this->country = $country;
 	}
 
+       /**
+       * 
+       * gets API root from Website
+       *
+       * @return string
+       */
 	private function getApiRoot()
 	{
 		$country = $this->country;
@@ -33,6 +40,13 @@ class TradeDevice {
 		return $root;
 	}
 
+       /**
+       * 
+       * Grabs data from the API
+       *
+       * @param string $query The query which was setup by other methods.
+       * @return boolean
+       */
 	private function getData($query)
 	{
 		$root = $this->getApiRoot();
