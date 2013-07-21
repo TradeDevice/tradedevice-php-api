@@ -4,7 +4,7 @@ TradeDevice.com PHP Api
 What does it do?
 ---------------
 
-The TradeDevice.com PHP Api allows and permits you to access all of the primary functions of TradeDevice.com within a PHP environment.
+The TradeDevice.com PHP API allows and permits you to access all of the primary functions of TradeDevice.com within a PHP environment.
 
 **You will be able to**
 
