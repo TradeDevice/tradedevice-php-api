@@ -75,6 +75,13 @@ class TradeDevice {
 		return $data;
 	}
 
+       /**
+       * 
+       * Sets up query for getting devices from the API
+       *
+       * @param string $device
+       * @return string ($data=query)
+       */
 	public function getQuestions($device)
 	{
 		// Define query
@@ -84,6 +91,14 @@ class TradeDevice {
 		return $data;
 	}
 
+       /**
+       * 
+       * Sets up query for getting devices from the API
+       *
+       * @param string $device
+       * @param array $questionarrow
+       * @return string ($data=query)
+       */
 	public function getAmount($device,$questionarray)
 	{
 		$questions;
